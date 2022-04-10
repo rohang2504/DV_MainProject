@@ -37,9 +37,11 @@
           touch-action: manipulation;
           width: 80;
       }
-
       .button-9:disabled {
          cursor: default;
+      }
+      .button-9:hover {
+        background-color: #00000075;
       }
 
       .button-9:focus {
@@ -58,19 +60,20 @@
           stroke: black;
           stroke-width: 4px;
       }
-      #tooltip {
+      .toolTip {
           position: absolute;
-          opacity: 0;
-          top: 0;
-          left: 0;
-          width: auto;
-          padding: 10px;
-          background: rgb(109, 8, 8);
-          font-family: sans-serif;
-          font-size: medium;
-          border-radius: 20px;
-          line-height: 1;
+          display: none;
+          min-width: 80px;
+          height: auto;
+          background: none repeat scroll 0 0 #ffffff;
+          border: 1px solid #000000;
+          padding: 14px;
+          text-align: center;
+          border-radius: 15px;
+          font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          box-shadow:0 1px 8px rgba(0,0,0,0.5);
       }
+      
 
   </style>
 
@@ -78,7 +81,7 @@
 
 <body>
   <h2 style="text-align: center; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Tornado Chart for Data Visualization Project</h2>
-  <p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">The following Tornado Chart ,aka a double sided horizontal bar chart, gives us a comparison of men and women athlete winners in different categories such as age, height, and weight. Olympic data from 1960 to 2016 was used to map the chart. It gives us an idea of which groups were the most succesful throughout the history of the Olympics</p>
+  <p style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">The following Tornado Chart ,aka a double sided horizontal bar chart, gives us a comparison of men and women athlete winners in different categories such as age, height, and weight. Olympic data from 1960 to 2016 was used to map the chart. It gives us an idea of which groups were the most succesful throughout the history of the Olympics.</p>
 
 <div style="text-align: center;">
   <button class="button-9" onclick="age_bar()">Age</button>
@@ -108,6 +111,8 @@ var svg = d3.select("#my_dataviz")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+
+var tooltip = d3.select("#my_dataviz").append("div").attr("class", "toolTip");
 
 age_bar();
 
@@ -175,6 +180,19 @@ function age_bar() {
       .attr("transform", "translate(-45,50)")
       .attr("class", "bar")
       .attr("rx",2)
+      .on("mouseenter", function(d){
+            tooltip
+              .style("left", d3.event.pageX - 75 + "px")
+              .style("top", d3.event.pageY - 75 + "px")
+              .style("display", "inline-block")
+              .html("Ages: " + d.Age + "<br>" + "Medals won: " + d.Medal_Count_M)
+        })
+      .on("mousemove", function(d){
+            tooltip.style("opacity", .95);
+        })
+      .on("mouseout", function(d){ 
+            tooltip.style("display", "none");
+        });
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -189,6 +207,20 @@ function age_bar() {
       .attr("transform", "translate(516,50)")
       .attr("class", "bar")
       .attr("rx",2)
+      .on("mouseenter", function(d){
+            tooltip
+              .style("left", d3.event.pageX - 75 + "px")
+              .style("top", d3.event.pageY - 75 + "px")
+              .style("display", "inline-block")
+              .html("Ages: " + d.Age + "<br>" + "Medals won: " + d.Medal_Count_F)
+        })
+      .on("mousemove", function(d){
+            tooltip.style("opacity", .95);
+        })
+      .on("mouseout", function(d){ 
+            tooltip.style("display", "none");
+        });
+
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
     svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
@@ -344,6 +376,19 @@ function height_bar() {
       .attr("transform", "translate(-45,50)")
       .attr("class", "bar")
       .attr("rx",2)
+      .on("mouseenter", function(d){
+            tooltip
+              .style("left", d3.event.pageX - 75 + "px")
+              .style("top", d3.event.pageY - 75 + "px")
+              .style("display", "inline-block")
+              .html("Height in cms: " + d.Height + "<br>" + "Medals won: " + d.Medal_Count_M)
+        })
+      .on("mousemove", function(d){
+            tooltip.style("opacity", .95);
+        })
+      .on("mouseout", function(d){ 
+            tooltip.style("display", "none");
+        });
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -358,6 +403,19 @@ function height_bar() {
       .attr("transform", "translate(516,50)")
       .attr("class", "bar")
       .attr("rx",2)
+      .on("mouseenter", function(d){
+            tooltip
+              .style("left", d3.event.pageX - 75 + "px")
+              .style("top", d3.event.pageY - 75 + "px")
+              .style("display", "inline-block")
+              .html("Height in cms: " + d.Height + "<br>" + "Medals won: " + d.Medal_Count_F)
+        })
+      .on("mousemove", function(d){
+            tooltip.style("opacity", .95);
+        })
+      .on("mouseout", function(d){ 
+            tooltip.style("display", "none");
+        });
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
     svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
@@ -513,6 +571,19 @@ function weight_bar() {
       .attr("transform", "translate(-45,50)")
       .attr("class", "bar")
       .attr("rx",2)
+      .on("mouseenter", function(d){
+            tooltip
+              .style("left", d3.event.pageX - 75 + "px")
+              .style("top", d3.event.pageY - 75 + "px")
+              .style("display", "inline-block")
+              .html("Weight in kgs: " + d.Weight + "<br>" + "Medals won: " + d.Medal_Count_M)
+        })
+      .on("mousemove", function(d){
+            tooltip.style("opacity", .95);
+        })
+      .on("mouseout", function(d){ 
+            tooltip.style("display", "none");
+        });
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -527,6 +598,19 @@ function weight_bar() {
       .attr("transform", "translate(516,50)")
       .attr("class", "bar")
       .attr("rx",2)
+      .on("mouseenter", function(d){
+            tooltip
+              .style("left", d3.event.pageX - 75 + "px")
+              .style("top", d3.event.pageY - 75 + "px")
+              .style("display", "inline-block")
+              .html("Weight in kgs: " + d.Weight + "<br>" + "Medals won: " + d.Medal_Count_F)
+        })
+      .on("mousemove", function(d){
+            tooltip.style("opacity", .95);
+        })
+      .on("mouseout", function(d){ 
+            tooltip.style("display", "none");
+        });
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
     svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
@@ -627,3 +711,7 @@ function weight_bar() {
 
 
 </body>
+<footer>
+  <p style="text-align : center; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Author: <a href="https://www.linkedin.com/in/rohangonjari2504/">Rohan Gonjari</a></p>
+  
+</footer>
