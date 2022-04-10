@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <title>Tornado Chart</title>
   <script src="https://d3js.org/d3.v4.js"></script>
+
   <style>
       /* CSS */
       .button-9 {
@@ -146,7 +147,9 @@ function age_bar() {
 
     svg.append("g")
       .attr("transform", "translate(" + 515 + ", 50)")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .selectAll("text")
+        .attr("transform", "translate(-13,0)");
 
     svg.append("g")
     .attr("transform", "translate(" + 445 + ", 50)")
@@ -186,7 +189,53 @@ function age_bar() {
     svg.append("text").attr("x",width-75).attr("y", 10).attr("class","title").text("Range of Ages").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20").attr("transform", "translate(0,20)");
     svg.append("text").attr("x",width-67).attr("y", 410).attr("class","title").text("Count of Medals").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","15");
 
-    // d3.selectAll('svg > g > *').remove();
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",265)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",685)  
+             .attr("y1",410)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",120)  
+             .attr("y2",400)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",120)  
+             .attr("y2",420)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",830)  
+             .attr("y1",420)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",830)  
+             .attr("y1",400)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
   })
 
 }
@@ -235,7 +284,9 @@ function height_bar() {
 
     svg.append("g")
       .attr("transform", "translate(" + 515 + ", 50)")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .selectAll("text")
+        .attr("transform", "translate(-8,0)");
 
     svg.append("g")
     .attr("transform", "translate(" + 445 + ", 50)")
@@ -275,6 +326,53 @@ function height_bar() {
     svg.append("text").attr("x",width-85).attr("y", 10).attr("class","title").text("Range of Heights").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20").attr("transform", "translate(0,20)");
     svg.append("text").attr("x",width-67).attr("y", 410).attr("class","title").text("Count of Medals").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","15");
 
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",265)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",685)  
+             .attr("y1",410)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",120)  
+             .attr("y2",400)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",120)  
+             .attr("y2",420)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",830)  
+             .attr("y1",420)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",830)  
+             .attr("y1",400)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
   })
 
 }
@@ -323,7 +421,9 @@ function weight_bar() {
 
     svg.append("g")
       .attr("transform", "translate(" + 515 + ", 50)")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .selectAll("text")
+        .attr("transform", "translate(-9,0)");
 
     svg.append("g")
     .attr("transform", "translate(" + 445 + ", 50)")
@@ -363,6 +463,53 @@ function weight_bar() {
     svg.append("text").attr("x",width-85).attr("y", 10).attr("class","title").text("Range of Weights").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20").attr("transform", "translate(0,20)");
     svg.append("text").attr("x",width-67).attr("y", 410).attr("class","title").text("Count of Medals").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","15");
 
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",265)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",685)  
+             .attr("y1",410)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",120)  
+             .attr("y2",400)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",110)  
+             .attr("y1",410)  
+             .attr("x2",120)  
+             .attr("y2",420)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",830)  
+             .attr("y1",420)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
+
+    svg.append("line")
+             .attr("x1",830)  
+             .attr("y1",400)  
+             .attr("x2",840)  
+             .attr("y2",410)  
+             .attr("stroke","Grey")  
+             .attr("stroke-width",1.5)
   })
 
 }
