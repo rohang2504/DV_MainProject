@@ -171,9 +171,10 @@ function age_bar() {
       .data(data)
       .enter()
       .append("rect")
-      .attr("x", function(d) {return x(d.Medal_Count_M)} )
+      // .attr("x", function(d) {return x(d.Medal_Count_M)} )
+      .attr("x", 490)
       .attr("y", function(d) { return y(d.Age); })
-      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
+      // .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
@@ -191,7 +192,12 @@ function age_bar() {
         })
       .on("mouseout", function(d){ 
             tooltip.style("display", "none");
-        });
+        })
+      .transition()
+      .duration(800)
+      .attr("x", function(d) {return x(d.Medal_Count_M)} )
+      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
+      .delay(function(d,i){console.log(i) ; return(i*10)})
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -200,7 +206,7 @@ function age_bar() {
       .append("rect")
       .attr("x", x1(0) )
       .attr("y", function(d) { return y(d.Age); })
-      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
+      // .attr("width", function(d) { return x1((d.Medal_Count_F)); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(64,118,245)")
       .attr("transform", "translate(516,50)")
@@ -218,7 +224,11 @@ function age_bar() {
         })
       .on("mouseout", function(d){ 
             tooltip.style("display", "none");
-        });
+        })
+      .transition()
+      .duration(800)
+      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
+      .delay(function(d,i){console.log(i) ; return(i*10)})
 
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
@@ -367,9 +377,9 @@ function height_bar() {
       .data(data)
       .enter()
       .append("rect")
-      .attr("x", function(d) {return x(d.Medal_Count_M)} )
+      .attr("x", 490 )
       .attr("y", function(d) { return y(d.Height); })
-      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
+      // .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
@@ -387,7 +397,12 @@ function height_bar() {
         })
       .on("mouseout", function(d){ 
             tooltip.style("display", "none");
-        });
+        })
+      .transition()
+      .duration(800)
+      .attr("x", function(d) {return x(d.Medal_Count_M)} )
+      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
+      .delay(function(d,i){console.log(i) ; return(i*10)})
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -396,7 +411,7 @@ function height_bar() {
       .append("rect")
       .attr("x", x1(0) )
       .attr("y", function(d) { return y(d.Height); })
-      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
+      // .attr("width", function(d) { return x1((d.Medal_Count_F)); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(64,118,245)")
       .attr("transform", "translate(516,50)")
@@ -414,7 +429,11 @@ function height_bar() {
         })
       .on("mouseout", function(d){ 
             tooltip.style("display", "none");
-        });
+        })
+      .transition()
+      .duration(800)
+      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
+      .delay(function(d,i){console.log(i) ; return(i*10)})
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
     svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
@@ -562,9 +581,9 @@ function weight_bar() {
       .data(data)
       .enter()
       .append("rect")
-      .attr("x", function(d) {return x(d.Medal_Count_M)} )
+      .attr("x", 490 )
       .attr("y", function(d) { return y(d.Weight); })
-      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
+      // .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
@@ -582,7 +601,12 @@ function weight_bar() {
         })
       .on("mouseout", function(d){ 
             tooltip.style("display", "none");
-        });
+        })
+      .transition()
+      .duration(800)
+      .attr("x", function(d) {return x(d.Medal_Count_M)} )
+      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
+      .delay(function(d,i){console.log(i) ; return(i*10)})
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -591,7 +615,7 @@ function weight_bar() {
       .append("rect")
       .attr("x", x1(0) )
       .attr("y", function(d) { return y(d.Weight); })
-      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
+      // .attr("width", function(d) { return x1((d.Medal_Count_F)); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(64,118,245)")
       .attr("transform", "translate(516,50)")
@@ -609,7 +633,11 @@ function weight_bar() {
         })
       .on("mouseout", function(d){ 
             tooltip.style("display", "none");
-        });
+        })
+      .transition()
+      .duration(800)
+      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
+      .delay(function(d,i){console.log(i) ; return(i*10)})
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
     svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
