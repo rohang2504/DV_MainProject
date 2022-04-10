@@ -10,10 +10,11 @@
       svg {
           /* width: 1200px;
           height: 600px; */
-          background-color: rgb(250, 250, 229);
+          background-color: rgba(32, 32, 32, 0.11);
           margin: auto;
           display: block;
-          /* border: black; */
+          border: black;
+          border-radius: 10px;
 
       }
   </style>
@@ -23,15 +24,16 @@
 <body>
   <h3 style="text-align: center; font-family: sans-serif;">DV Tornado Chart</h3>
 
+
+<div style="text-align: center; font-family: sans-serif;">
+  <button onclick="update(data1)">Age</button>
+  <button onclick="update(data2)">Height</button>
+  <button onclick="update(data3)">Weight</button>
+</div>
+<br><br>
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
-<br><br><br>
-<div style="font-family: sans-serif;">
-  <input type="radio" name="gender" value="age"> Age<br>
-  <input type="radio" name="gender" value="height"> Height<br>
-  <input type="radio" name="gender" value="weight"> Weight<br>
-</div>
 
 <script>
 
