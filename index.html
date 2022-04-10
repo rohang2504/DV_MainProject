@@ -393,7 +393,7 @@ function weight_bar() {
 
     // Add X axis
     var x = d3.scaleLinear()
-      .domain([0, 14686])
+      .domain([0, 11476])
       .range([ width, 0]);
     svg.append("g")
       .attr("transform", "translate(-45," + 360 + ")")
@@ -404,7 +404,7 @@ function weight_bar() {
 
     // Add 2nd X axis
     var x1 = d3.scaleLinear()
-      .domain([0, 4769])
+      .domain([0, 3032])
       .range([ 0, width]);
     svg.append("g")
       .attr("transform", "translate(515," + 360 + ")")
