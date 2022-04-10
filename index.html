@@ -17,12 +17,47 @@
           border-radius: 10px;
 
       }
+      .axis path,
+      .axis line {
+          fill: none;
+          stroke: #113c52;
+          stroke-width: 1px;
+          shape-rendering: crispEdges;
+      }
+      .toolTip {
+          position: absolute;
+          display: none;
+          min-width: 80px;
+          height: auto;
+          background: none repeat scroll 0 0 #ffffff;
+          border: 1px solid #6F257F;
+          padding: 14px;
+          text-align: center;
+      }
+      .svg-container {
+          display: inline-block;
+          position: relative;
+          width: 100%;
+          padding-bottom: 100%; /* aspect ratio */
+          vertical-align: top;
+          overflow: hidden;
+      }
+      .svg-content-responsive {
+          display: inline-block;
+          position: absolute;
+          top: 10px;
+          left: 0;
+      }
+      .chart rect:hover {
+          fill: #64707d;
+          text-align: center;
+      }
   </style>
 
 </head>
 
 <body>
-  <h3 style="text-align: center; font-family: sans-serif;">DV Tornado Chart</h3>
+  <h2 style="text-align: center; ">DV Tornado Chart</h2>
 
 
 <div style="text-align: center; font-family: sans-serif;">
@@ -41,15 +76,15 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 540, bottom: 70, left: 70},
-    width = 1100 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 1100 - margin.left - margin.right, //490
+    height = 400 - margin.top - margin.bottom; //310
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    // .attr("background-color", "Yellow")
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
+  .attr("viewBox", "0 0 1100 450")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
@@ -60,9 +95,9 @@ d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/
   // Add X axis
   var x = d3.scaleLinear()
     .domain([0, 21000])
-    .range([ 0, width]);
+    .range([ width, 0]);
   svg.append("g")
-    .attr("transform", "translate(-60," + height + ")")
+    .attr("transform", "translate(-60," + 360 + ")")
     .call(d3.axisBottom(x))
     .selectAll("text")
       .attr("transform", "translate(-0,0)rotate(-45)")
@@ -70,10 +105,10 @@ d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/
 
   // Add 2nd X axis
   var x1 = d3.scaleLinear()
-    .domain([21000, 0])
+    .domain([0, 21000])
     .range([ 0, width]);
   svg.append("g")
-    .attr("transform", "translate(500," + height + ")")
+    .attr("transform", "translate(500," + 360 + ")")
     .call(d3.axisBottom(x1))
     .selectAll("text")
       .attr("transform", "translate(-10,0)rotate(-45)")
@@ -84,24 +119,25 @@ d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/
     .range([ 0, height ])
     .domain(data.map(function(d) { return (d.Age); }))
     .padding(0.2);
+
   svg.append("g")
-    .attr("transform", "translate(" + 490 + ", 0)")
+    .attr("transform", "translate(" + 500 + ", 50)")
     .call(d3.axisLeft(y));
 
 
-  //Bars
+  //Bars Left
   svg.selectAll("Rect_right")
     .data(data)
     .enter()
     .append("rect")
-    .attr("x", x(0) )
+    .attr("x", function(d) {return x(d.Medal_Count)} )
     .attr("y", function(d) { return y(d.Age); })
-    .attr("width", function(d) { return x((d.Medal_Count)*1); })
+    .attr("width", function(d) { return x(0) - x(d.Medal_Count); })
     .attr("height", y.bandwidth() )
     .attr("fill", "Orange")
-    .attr("transform", "translate(-60,0)")
+    .attr("transform", "translate(-60,50)")
 
-  // 2nd set of Bars
+  // 2nd set of Bars (Right)
   svg.selectAll("Rect_left")
     .data(data)
     .enter()
@@ -111,12 +147,11 @@ d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/
     .attr("width", function(d) { return x1((d.Medal_Count)); })
     .attr("height", y.bandwidth() )
     .attr("fill", "Blue")
+    .attr("transform", "translate(500,50)")
 
-    // .attr("x", function(d) { return x(d.Country); })
-    // .attr("y", function(d) { return y(d.Value); })
-    // .attr("width", x.bandwidth())
-    // .attr("height", function(d) { return height - y(d.Value); })
-    // .attr("fill", "#69b3a2")
+  svg.append("text").attr("x",width-325).attr("y", 10).attr("class","title").text("Men");
+  svg.append("text").attr("x",width+235).attr("y", 10).attr("class","title").text("Women");
+  svg.append("text").attr("x",width-85).attr("y", 10).attr("class","title").text("Range of attribute");
 
 })
 
