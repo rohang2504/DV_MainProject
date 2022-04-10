@@ -109,6 +109,7 @@ var svg = d3.select("#my_dataviz")
 age_bar();
 
 
+
 //*****************************************************************************************************************************************************************************
 function age_bar() {
 
@@ -238,13 +239,21 @@ function age_bar() {
              .attr("y2",410)  
              .attr("stroke","Grey")  
              .attr("stroke-width",1.5)
+
+    svg.append('image')
+        .attr('xlink:href', 'https://github.com/rohang2504/DV_MainProject/raw/main/images/toppng.com-male-symbol-362x512.png')
+        .attr('width', 35)
+        .attr('height', 35)
+        .attr('x',140)
+        .attr('y',-14)
+
+    svg.append('image')
+        .attr('xlink:href', 'https://github.com/rohang2504/DV_MainProject/raw/main/images/kisspng-female-gender-symbol-clip-art-woman-symbol-5a8725775d6b03.3721892815188063913827.png')
+        .attr('width', 35)
+        .attr('height', 35)
+        .attr('x',795)
+        .attr('y',-14)
   })
-
-}
-
-function age_load(){
-  window.location.reload();
-  window.onload = age_bar();
 
 }
 
@@ -377,15 +386,24 @@ function height_bar() {
              .attr("y2",410)  
              .attr("stroke","Grey")  
              .attr("stroke-width",1.5)
+
+    svg.append('image')
+        .attr('xlink:href', 'https://github.com/rohang2504/DV_MainProject/raw/main/images/toppng.com-male-symbol-362x512.png')
+        .attr('width', 35)
+        .attr('height', 35)
+        .attr('x',140)
+        .attr('y',-14)
+
+    svg.append('image')
+        .attr('xlink:href', 'https://github.com/rohang2504/DV_MainProject/raw/main/images/kisspng-female-gender-symbol-clip-art-woman-symbol-5a8725775d6b03.3721892815188063913827.png')
+        .attr('width', 35)
+        .attr('height', 35)
+        .attr('x',795)
+        .attr('y',-14)
   })
 
 }
 
-function height_load(){
-  window.location.reload();
-  window.onload = height_bar();
-
-}
 
 //**************************************************************************************************************************************************************************
 function weight_bar() {
@@ -517,15 +535,25 @@ function weight_bar() {
              .attr("y2",410)  
              .attr("stroke","Grey")  
              .attr("stroke-width",1.5)
+
+
+    svg.append('image')
+        .attr('xlink:href', 'https://github.com/rohang2504/DV_MainProject/raw/main/images/toppng.com-male-symbol-362x512.png')
+        .attr('width', 35)
+        .attr('height', 35)
+        .attr('x',140)
+        .attr('y',-14)
+
+    svg.append('image')
+        .attr('xlink:href', 'https://github.com/rohang2504/DV_MainProject/raw/main/images/kisspng-female-gender-symbol-clip-art-woman-symbol-5a8725775d6b03.3721892815188063913827.png')
+        .attr('width', 35)
+        .attr('height', 35)
+        .attr('x',795)
+        .attr('y',-14)
   })
 
 }
 
-function weight_load(){
-  window.location.reload();
-  window.onload = weight_bar();
-
-}
 
 
 </script>
