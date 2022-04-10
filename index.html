@@ -11,7 +11,7 @@
       .button-9 {
           appearance: button;
           backface-visibility: hidden;
-          background-color: #f54076;
+          background-color: #f57340;
           border-radius: 6px;
           border-width: 0;
           box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
@@ -42,25 +42,18 @@
       }
 
       .button-9:focus {
-          box-shadow: rgba(93, 50, 70, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(214, 50, 132, 0.3) 0 0 0 4px;
-      }
-      .test{
-          height:30px;
-          width:80px;
-          border-radius: 15px;
-          font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-          background-color: #405cf5;
-
+          box-shadow: rgba(93, 50, 70, 0.1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 214, 159, 0.3) 0 0 0 4px;
       }
       svg {
-          background-color: rgba(32, 32, 32, 0.11);
+          background-color: rgba(245, 115, 64, 0.11);
           margin: auto;
           display: block;
-          border: black;
           border-radius: 15px;
 
       }
-
+      .bar:hover {
+          fill: rgb(184, 184, 184);
+      }
 
   </style>
 
@@ -90,6 +83,7 @@ var margin = {top: 20, right: 540, bottom: 70, left: 70},
     width = 1100 - margin.left - margin.right, //490
     height = 400 - margin.top - margin.bottom; //310
 
+
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
   .append("svg")
@@ -100,6 +94,7 @@ var svg = d3.select("#my_dataviz")
 
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/Olympic_Athletes/M_age.csv", function(data) {
+
 
   // Add X axis
   var x = d3.scaleLinear()
@@ -148,8 +143,9 @@ d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/
     .attr("y", function(d) { return y(d.Age); })
     .attr("width", function(d) { return x(0) - x(d.Medal_Count); })
     .attr("height", y.bandwidth() )
-    .attr("fill", "Orange")
+    .attr("fill", "rgb(245,64,118)")
     .attr("transform", "translate(-45,50)")
+    .attr("class", "bar")
 
   // 2nd set of Bars (Right)
   svg.selectAll("Rect_left")
@@ -160,14 +156,17 @@ d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/
     .attr("y", function(d) { return y(d.Age); })
     .attr("width", function(d) { return x1((d.Medal_Count)); })
     .attr("height", y.bandwidth() )
-    .attr("fill", "Blue")
-    .attr("transform", "translate(515,50)")
+    .attr("fill", "rgb(64,118,245)")
+    .attr("transform", "translate(516,50)")
+    .attr("class", "bar")
 
   svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
   svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
   svg.append("text").attr("x",width-75).attr("y", 10).attr("class","title").text("Range of Ages").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20").attr("transform", "translate(0,20)");
 
   // d3.selectAll('svg > g > *').remove();
+
+
 })
 
 
@@ -227,8 +226,9 @@ function age_bar() {
       .attr("y", function(d) { return y(d.Age); })
       .attr("width", function(d) { return x(0) - x(d.Medal_Count); })
       .attr("height", y.bandwidth() )
-      .attr("fill", "Orange")
+      .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
+      .attr("class", "bar")
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -239,8 +239,9 @@ function age_bar() {
       .attr("y", function(d) { return y(d.Age); })
       .attr("width", function(d) { return x1((d.Medal_Count)); })
       .attr("height", y.bandwidth() )
-      .attr("fill", "Blue")
-      .attr("transform", "translate(515,50)")
+      .attr("fill", "rgb(64,118,245)")
+      .attr("transform", "translate(516,50)")
+      .attr("class", "bar")
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
     svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
@@ -313,8 +314,9 @@ function height_bar() {
       .attr("y", function(d) { return y(d.Age); })
       .attr("width", function(d) { return x(0) - x(d.Medal_Count); })
       .attr("height", y.bandwidth() )
-      .attr("fill", "Orange")
+      .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
+      .attr("class", "bar")
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -325,8 +327,9 @@ function height_bar() {
       .attr("y", function(d) { return y(d.Age); })
       .attr("width", function(d) { return x1((d.Medal_Count)); })
       .attr("height", y.bandwidth() )
-      .attr("fill", "Blue")
-      .attr("transform", "translate(515,50)")
+      .attr("fill", "rgb(64,118,245)")
+      .attr("transform", "translate(516,50)")
+      .attr("class", "bar")
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
     svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
@@ -398,8 +401,9 @@ function weight_bar() {
       .attr("y", function(d) { return y(d.Age); })
       .attr("width", function(d) { return x(0) - x(d.Medal_Count); })
       .attr("height", y.bandwidth() )
-      .attr("fill", "Orange")
+      .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
+      .attr("class", "bar")
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
@@ -410,8 +414,9 @@ function weight_bar() {
       .attr("y", function(d) { return y(d.Age); })
       .attr("width", function(d) { return x1((d.Medal_Count)); })
       .attr("height", y.bandwidth() )
-      .attr("fill", "Blue")
-      .attr("transform", "translate(515,50)")
+      .attr("fill", "rgb(64,118,245)")
+      .attr("transform", "translate(516,50)")
+      .attr("class", "bar")
 
     svg.append("text").attr("x",width-320).attr("y", 10).attr("class","title").text("Men").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
     svg.append("text").attr("x",width+240).attr("y", 10).attr("class","title").text("Women").attr("font-family","-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif").attr("font-size","20");
