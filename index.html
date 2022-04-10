@@ -114,11 +114,11 @@ function age_bar() {
   d3.selectAll('svg > g > *').remove();
 
   // Parse the Data
-  d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/Olympic_Athletes/M_age.csv", function(data) {
+  d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MainProject/main/datasets/age.csv", function(data) {
 
     // Add X axis
     var x = d3.scaleLinear()
-      .domain([0, 21000])
+      .domain([0, 11294])
       .range([ width, 0]);
     svg.append("g")
       .attr("transform", "translate(-45," + 360 + ")")
@@ -129,7 +129,7 @@ function age_bar() {
 
     // Add 2nd X axis
     var x1 = d3.scaleLinear()
-      .domain([0, 21000])
+      .domain([0, 4374])
       .range([ 0, width]);
     svg.append("g")
       .attr("transform", "translate(515," + 360 + ")")
@@ -160,9 +160,9 @@ function age_bar() {
       .data(data)
       .enter()
       .append("rect")
-      .attr("x", function(d) {return x(d.Medal_Count)} )
+      .attr("x", function(d) {return x(d.Medal_Count_M)} )
       .attr("y", function(d) { return y(d.Age); })
-      .attr("width", function(d) { return x(0) - x(d.Medal_Count); })
+      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
@@ -175,7 +175,7 @@ function age_bar() {
       .append("rect")
       .attr("x", x1(0) )
       .attr("y", function(d) { return y(d.Age); })
-      .attr("width", function(d) { return x1((d.Medal_Count)); })
+      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(64,118,245)")
       .attr("transform", "translate(516,50)")
@@ -203,11 +203,11 @@ function height_bar() {
   d3.selectAll('svg > g > *').remove();
 
   // Parse the Data
-  d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/Olympic_Athletes/M_h.csv", function(data) {
+  d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MainProject/main/datasets/height.csv", function(data) {
 
     // Add X axis
     var x = d3.scaleLinear()
-      .domain([0, 21000])
+      .domain([0, 12188])
       .range([ width, 0]);
     svg.append("g")
       .attr("transform", "translate(-45," + 360 + ")")
@@ -218,7 +218,7 @@ function height_bar() {
 
     // Add 2nd X axis
     var x1 = d3.scaleLinear()
-      .domain([0, 21000])
+      .domain([0, 3029])
       .range([ 0, width]);
     svg.append("g")
       .attr("transform", "translate(515," + 360 + ")")
@@ -249,9 +249,9 @@ function height_bar() {
       .data(data)
       .enter()
       .append("rect")
-      .attr("x", function(d) {return x(d.Medal_Count)} )
+      .attr("x", function(d) {return x(d.Medal_Count_M)} )
       .attr("y", function(d) { return y(d.Height); })
-      .attr("width", function(d) { return x(0) - x(d.Medal_Count); })
+      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
@@ -264,7 +264,7 @@ function height_bar() {
       .append("rect")
       .attr("x", x1(0) )
       .attr("y", function(d) { return y(d.Height); })
-      .attr("width", function(d) { return x1((d.Medal_Count)); })
+      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(64,118,245)")
       .attr("transform", "translate(516,50)")
@@ -291,11 +291,11 @@ function weight_bar() {
   d3.selectAll('svg > g > *').remove();
 
   // Parse the Data
-  d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MP/main/M_Proj/Datasets/Olympic_Athletes/M_w.csv", function(data) {
+  d3.csv("https://raw.githubusercontent.com/rohang2504/DV_MainProject/main/datasets/weight.csv", function(data) {
 
     // Add X axis
     var x = d3.scaleLinear()
-      .domain([0, 21000])
+      .domain([0, 14686])
       .range([ width, 0]);
     svg.append("g")
       .attr("transform", "translate(-45," + 360 + ")")
@@ -306,7 +306,7 @@ function weight_bar() {
 
     // Add 2nd X axis
     var x1 = d3.scaleLinear()
-      .domain([0, 21000])
+      .domain([0, 4769])
       .range([ 0, width]);
     svg.append("g")
       .attr("transform", "translate(515," + 360 + ")")
@@ -337,9 +337,9 @@ function weight_bar() {
       .data(data)
       .enter()
       .append("rect")
-      .attr("x", function(d) {return x(d.Medal_Count)} )
+      .attr("x", function(d) {return x(d.Medal_Count_M)} )
       .attr("y", function(d) { return y(d.Weight); })
-      .attr("width", function(d) { return x(0) - x(d.Medal_Count); })
+      .attr("width", function(d) { return x(0) - x(d.Medal_Count_M); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(245,64,118)")
       .attr("transform", "translate(-45,50)")
@@ -352,7 +352,7 @@ function weight_bar() {
       .append("rect")
       .attr("x", x1(0) )
       .attr("y", function(d) { return y(d.Weight); })
-      .attr("width", function(d) { return x1((d.Medal_Count)); })
+      .attr("width", function(d) { return x1((d.Medal_Count_F)); })
       .attr("height", y.bandwidth() )
       .attr("fill", "rgb(64,118,245)")
       .attr("transform", "translate(516,50)")
