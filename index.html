@@ -54,6 +54,9 @@
       }
       .bar:hover {
           fill: rgb(184, 184, 184);
+          opacity: .6;
+          stroke: black;
+          stroke-width: 4px;
       }
       #tooltip {
           position: absolute;
@@ -510,7 +513,6 @@ function weight_bar() {
       .attr("transform", "translate(-45,50)")
       .attr("class", "bar")
       .attr("rx",2)
-      .attr("ry",0)
 
     // 2nd set of Bars (Right)
     svg.selectAll("Rect_left")
